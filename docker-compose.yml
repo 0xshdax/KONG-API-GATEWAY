@@ -1,6 +1,20 @@
 version: '3.9'
 services:
+  kong-database:
+    image: postgres:9.6
+    container_name: kong-database
+    network_mode: kong-net
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+      - POSTGRES_PASSWORD=kong
+    volumes:
+      - './data:/var/lib/postgresql/data'
+    ports:
+      - '5432:5432'
+
   kong-migrations:
+    platform: linux/amd64
     image: 'kong:2.7.0-alpine'
     network_mode: kong-net
     environment:
@@ -10,6 +24,7 @@ services:
     command: kong migrations bootstrap
 
   kong:
+    platform: linux/amd64
     image: 'kong:2.7.0-alpine'
     container_name: kong
     network_mode: kong-net
