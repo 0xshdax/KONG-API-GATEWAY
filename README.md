@@ -1,11 +1,28 @@
 # KONG (API Gateway) with database
-## Create network 
+## Port listing
+```yaml
+version: '3.9'
+services:
+  kong-database:
+    image: postgres:9.6
+    container_name: kong-database
+    [...]
+  ports:
+      - '5432:5432' ## You can change port, example 1111:5432
+  [...]
+  kong:
+    platform: linux/amd64
+    [...]
+  ports:
+      - '8000:8000'
+      - '8443:8443'
+      - '8001:8001' ## Delete after setting
+      - '8444:8444' ## Delete after setting
 ```
-docker network create kong-net
+## Installation 
 ```
-## Create database, migration database & start kong with docker-compose
-```
-docker-compose up -d kong-database && sleep 3s && docker-compose up kong-migrations && docker-compose up -d kong
+shdax@github:~$ chmod +x create.sh
+shdax@github:~$ ./create.sh
 ```
 ## Add service
 ```
