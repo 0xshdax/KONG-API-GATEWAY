@@ -8,14 +8,14 @@ services:
     container_name: kong-database
     [...]
   ports:
-      - '5432:5432' ## You can change port, example 1111:5432
+      - '5432:5432' ## You can change port, for example 1111:5432
   [...]
   kong:
     platform: linux/amd64
     [...]
   ports:
-      - '8000:8000'
-      - '8443:8443'
+      - '8000:8000' ## You can change port, for example 80:8000
+      - '8443:8443' ## You can change port, for example 433:8433
       - '8001:8001' ## Delete after setting
       - '8444:8444' ## Delete after setting
 ```
