@@ -21,8 +21,8 @@ services:
 ```
 ## Installation 
 ```
-shdax@github:~$ chmod +x create.sh
-shdax@github:~$ ./create.sh
+0xshdax@github:~$ chmod +x create.sh
+0xshdax@github:~$ ./create.sh
 ```
 ## Add service
 ```
